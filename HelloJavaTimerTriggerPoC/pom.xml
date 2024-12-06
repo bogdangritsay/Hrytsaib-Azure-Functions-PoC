@@ -14,7 +14,9 @@
         <java.version>17</java.version>
         <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
         <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
+<!--
         <functionAppName>func-wms-ais-nprd-02</functionAppName>
+-->
     </properties>
 
     <dependencies>
@@ -42,7 +44,7 @@
 
     <build>
         <plugins>
-            <plugin>
+          <!--  <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
@@ -57,30 +59,30 @@
                 <artifactId>azure-functions-maven-plugin</artifactId>
                 <version>${azure.functions.maven.plugin.version}</version>
                 <configuration>
-                    <!-- function app name -->
+                    &lt;!&ndash; function app name &ndash;&gt;
                     <appName>${functionAppName}</appName>
-                    <!-- function app resource group -->
+                    &lt;!&ndash; function app resource group &ndash;&gt;
                     <resourceGroup>rg-wms-ais-nprd-uks-01</resourceGroup>
-                    <!-- function app service plan name -->
+                    &lt;!&ndash; function app service plan name &ndash;&gt;
                     <appServicePlanName>jASP-rgwmsaisnprduks01-8120</appServicePlanName>
-                    <!-- function app region-->
-                    <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-regions for all valid values -->
+                    &lt;!&ndash; function app region&ndash;&gt;
+                    &lt;!&ndash; refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-regions for all valid values &ndash;&gt;
                     <region>uksouth</region>
-                    <!-- function pricingTier, default to be consumption if not specified -->
-                    <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-pricing-tiers for all valid values -->
-                    <!-- <pricingTier></pricingTier> -->
+                    &lt;!&ndash; function pricingTier, default to be consumption if not specified &ndash;&gt;
+                    &lt;!&ndash; refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-pricing-tiers for all valid values &ndash;&gt;
+                    &lt;!&ndash; <pricingTier></pricingTier> &ndash;&gt;
 
-                    <!-- Whether to disable application insights, default is false -->
-                    <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details for all valid configurations for application insights-->
-                    <!-- <disableAppInsights></disableAppInsights> -->
+                    &lt;!&ndash; Whether to disable application insights, default is false &ndash;&gt;
+                    &lt;!&ndash; refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details for all valid configurations for application insights&ndash;&gt;
+                    &lt;!&ndash; <disableAppInsights></disableAppInsights> &ndash;&gt;
                     <runtime>
-                        <!-- runtime os, could be windows, linux or docker-->
+                        &lt;!&ndash; runtime os, could be windows, linux or docker&ndash;&gt;
                         <os>linux</os>
                         <javaVersion>17</javaVersion>
-                        <!-- for docker function, please set the following parameters -->
-                        <!-- <image>[hub-user/]repo-name[:tag]</image> -->
-                        <!-- <serverId></serverId> -->
-                        <!-- <registryUrl></registryUrl>  -->
+                        &lt;!&ndash; for docker function, please set the following parameters &ndash;&gt;
+                        &lt;!&ndash; <image>[hub-user/]repo-name[:tag]</image> &ndash;&gt;
+                        &lt;!&ndash; <serverId></serverId> &ndash;&gt;
+                        &lt;!&ndash; <registryUrl></registryUrl>  &ndash;&gt;
                     </runtime>
                     <appSettings>
                         <property>
@@ -97,8 +99,12 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
+            </plugin>-->
+
+
+
+
+<!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.7.1</version>
@@ -117,7 +123,11 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
+
+
+
+
             <!--Remove obj folder generated by .NET SDK in maven clean-->
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
