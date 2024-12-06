@@ -28,26 +28,10 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: ${{ env.JAVA_VERSION }}
+          distribution: 'adoptopenjdk'  # додано
 
       - name: 'Restore Project Dependencies Using Mvn'
         shell: bash
         run: |
           pushd './${{ env.PACKAGE_DIRECTORY }}'
           mvn clean package
-          popd
-
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZ_FUNC_APP_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZ_FUNC_APP_TENANT_ID }}
-          subscription-id: ${{ secrets.AZ_FUNC_APP_SUBSCRIPTION_ID }}
-
-      - name: 'Run Azure Functions Action'
-        uses: Azure/functions-action@v1
-        id: fa
-        with:
-          app-name: 'az-func-app-hrytsaib-poc'
-          slot-name: 'stage-slot'
-          package: '${{ env.PACKAGE_DIRECTORY }}'
-          respect-pom-xml: true
