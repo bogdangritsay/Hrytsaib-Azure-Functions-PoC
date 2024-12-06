@@ -14,9 +14,10 @@
         <java.version>17</java.version>
         <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
         <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
-<!--
-        <functionAppName>func-wms-ais-nprd-02</functionAppName>
--->
+        <functionAppName>az-func-app-hrytsaib-poc</functionAppName>
+        <functionAppRegion>uksouth</functionAppRegion>
+        <functionResourceGroup>az-func-poc-rg</functionResourceGroup>
+        <functionAppServicePlanName>ASP-azfuncpocrg-b54c</functionAppServicePlanName>
     </properties>
 
     <dependencies>
@@ -44,7 +45,7 @@
 
     <build>
         <plugins>
-          <!--  <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
@@ -59,30 +60,30 @@
                 <artifactId>azure-functions-maven-plugin</artifactId>
                 <version>${azure.functions.maven.plugin.version}</version>
                 <configuration>
-                    &lt;!&ndash; function app name &ndash;&gt;
+                    <!-- function app name -->
                     <appName>${functionAppName}</appName>
-                    &lt;!&ndash; function app resource group &ndash;&gt;
-                    <resourceGroup>rg-wms-ais-nprd-uks-01</resourceGroup>
-                    &lt;!&ndash; function app service plan name &ndash;&gt;
-                    <appServicePlanName>jASP-rgwmsaisnprduks01-8120</appServicePlanName>
-                    &lt;!&ndash; function app region&ndash;&gt;
-                    &lt;!&ndash; refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-regions for all valid values &ndash;&gt;
-                    <region>uksouth</region>
-                    &lt;!&ndash; function pricingTier, default to be consumption if not specified &ndash;&gt;
-                    &lt;!&ndash; refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-pricing-tiers for all valid values &ndash;&gt;
-                    &lt;!&ndash; <pricingTier></pricingTier> &ndash;&gt;
+                    <!-- function app resource group -->
+                    <resourceGroup>${functionResourceGroup}</resourceGroup>
+                    <!-- function app service plan name -->
+                    <appServicePlanName>${functionAppServicePlanName}</appServicePlanName>
+                    <!-- function app region-->
+                    <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-regions for all valid values -->
+                    <region>${functionAppRegion}</region>
+                    <!-- function pricingTier, default to be consumption if not specified -->
+                    <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-pricing-tiers for all valid values -->
+                    <!-- <pricingTier></pricingTier> -->
 
-                    &lt;!&ndash; Whether to disable application insights, default is false &ndash;&gt;
-                    &lt;!&ndash; refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details for all valid configurations for application insights&ndash;&gt;
-                    &lt;!&ndash; <disableAppInsights></disableAppInsights> &ndash;&gt;
+                    <!-- Whether to disable application insights, default is false -->
+                    <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details for all valid configurations for application insights-->
+                    <!-- <disableAppInsights></disableAppInsights> -->
                     <runtime>
-                        &lt;!&ndash; runtime os, could be windows, linux or docker&ndash;&gt;
+                        <!-- runtime os, could be windows, linux or docker-->
                         <os>linux</os>
                         <javaVersion>17</javaVersion>
-                        &lt;!&ndash; for docker function, please set the following parameters &ndash;&gt;
-                        &lt;!&ndash; <image>[hub-user/]repo-name[:tag]</image> &ndash;&gt;
-                        &lt;!&ndash; <serverId></serverId> &ndash;&gt;
-                        &lt;!&ndash; <registryUrl></registryUrl>  &ndash;&gt;
+                        <!-- for docker function, please set the following parameters -->
+                        <!-- <image>[hub-user/]repo-name[:tag]</image> -->
+                        <!-- <serverId></serverId> -->
+                        <!-- <registryUrl></registryUrl>  -->
                     </runtime>
                     <appSettings>
                         <property>
@@ -99,12 +100,8 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
-
-
-
-
-<!--            <plugin>
+            </plugin>
+        <!--    <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.7.1</version>
@@ -124,10 +121,6 @@
                     </execution>
                 </executions>
             </plugin>-->
-
-
-
-
             <!--Remove obj folder generated by .NET SDK in maven clean-->
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
