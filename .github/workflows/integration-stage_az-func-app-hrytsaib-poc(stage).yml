@@ -21,6 +21,10 @@ jobs:
       id-token: write #This is required for requesting the JWT
 
     steps:
+
+      - name: Setup GitHub authentication
+        run: git config --global url."https://${{ secrets.GH_TOKEN }}@github.com".insteadOf "https://github.com"
+
       - name: 'Checkout GitHub Action'
         uses: actions/checkout@v4
 
